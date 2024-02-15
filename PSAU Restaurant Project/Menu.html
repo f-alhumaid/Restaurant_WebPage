@@ -1,0 +1,211 @@
+<!-- Fahad Khalid Alhumaid - 442050494 -->
+<html>
+<head>
+<title>PSAU Restaurant - Menu</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin:0;
+            padding:0;
+            background-color: LightGrey ; 
+            color: #333 ;
+        }
+        a:hover{
+            color: DarkBrown; 
+            text-decoration: underline;
+        }
+        header{
+            background-color: #004d40; /* DarkCyan */
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        nav a{
+            display: block;
+            padding: 5px;
+            color: white;
+        }
+
+        main{
+            margin-left: 0in;
+        }
+
+        section{
+            margin-bottom: 20px;
+            background-color:white; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* shadow above the Cart*/
+        }
+
+        h1, h2, h3{
+            margin-top: 0;
+            font-weight: bolder;
+            text-align: center;
+        }
+		h3{
+            margin-top: 0;
+            font-weight: bolder;
+            text-align: left;
+        }
+        .menu-items{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .menu-item{
+            width: calc(33.33% - 20px); /*(to make the items orgnaized )*/
+            margin: 10px;
+        }
+        .menu-item h3::after {
+            content: attr(data-price); /* retreve the  value of the data price*/
+            display: block;
+            color: #004d40; /* Dark Cyan */
+        }
+       .cart{
+            float: right;
+            width: 200px;
+            margin-right: 20px;
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .menu-item h3{
+            color: #004d40; /* Dark cyan */
+        }
+        .add-to-cart {
+            background-color: #004d40; /* ddark cyan color*/
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer{
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p{
+            margin: 0;
+            font-size: smaller;
+        }
+		#logout{
+            float: right;
+            margin-left: 10px; 
+        }
+    </style>
+
+<script>
+var cartItems = []; /*empty arrr*/
+var total = 0; 
+
+function addToCart(item, price) {
+  cartItems[cartItems.length] = {item: item, price:price };
+total =total+ price;
+updateCart();
+}
+
+
+function updateCart() {
+ var cartList =document.getElementById("cart-items");
+var cartTotal= document.getElementById("cart-total");
+
+cartList.innerHTML=  "";
+
+for (var i = 0; i < cartItems.length; i++) {
+cartList.innerHTML=cartList.innerHTML+ "<li>"+cartItems[i].item +" - "+cartItems[i].price+" SAR</li>";
+}
+
+cartTotal.innerHTML=total+" SAR  ";
+}
+
+</script>
+</head>
+<body>
+<header style="border-bottom-style: solid; border-bottom-color: #004d40;">
+<h1 style=" color: white;"><big>PSAU Restaurant</big></h1>
+		
+<nav> 
+<ul id="logout"><li><a  href="SignIn.html">LogOut</a></li></ul>
+
+<ul>
+<li> </li> <li> </li> <li> </li> <li> </li> <li> </li> <li> </li><li> </li><li> </li>
+<li> <a href="HomePage.html">Home</a> </li>
+<li> <a href="Menu.html">Menu</a> </li>
+<li> <a href="Reservations.html">Reservations</a> </li>
+<li> <a href="AboutUs.html">About Us</a> </li>
+<li> <a href="Contact.html">Contact</a> </li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="cart">
+<h2>Your Cart</h2>
+<ul id="cart-items"></ul>
+<b><p>Total: <span id="cart-total">0 SAR</span></p></b>
+</section>
+		 
+<section>
+<h2>Our Menu</h2>
+ 
+<div class="menu-items">
+<div class="menu-item">
+<img src="Mandi.jfif" alt="Mandi image" height="200"  width="200">
+<h3>Mandi</h3>
+<p> Yemeni rice & spices, slow-cooked meat, spicy sauce.</p>
+<button class="add-to-cart" onclick="addToCart('Mandi', 21)">Add to Cart</button> <p><b>Price: 21</b></p>
+</div>
+                
+<div class="menu-item">
+<img src="Falafel.jpg" alt="Falafel" height="200"  width="200">
+<h3>Falafel</h3>
+<p>sandwich (with pita bread, lettuce, tomato, and tahini sauce) or as a salad (with lettuce, tomato, cucumber, and hummus). It is a healthy and delicious dish</p>
+<button class="add-to-cart" onclick="addToCart('Falafel', 5)">Add to Cart</button> <p><b>Price: 5</b></p>
+</div>
+                
+<div class="menu-item">
+<img src="Egg-Salad-Sandwich.jfif" alt="Egg-Salad-Sandwich" height="200"  width="200">
+<h3>Egg-Salad-Sandwich</h3>
+<p>consists of chopped hard-boiled eggs mixed with mayonnaise, mustard, and other seasonings, served on bread.</p>
+<button class="add-to-cart" onclick="addToCart('Egg-Salad-Sandwich', 3)">Add to Cart</button> <p><b>Price: 3</b></p>
+</div>
+<div class="menu-item">
+<img src="Shawarma.jfif" alt="Shawarma" height="250"  width="250">
+<h3>Shawarma</h3>
+<p></p>
+<button class="add-to-cart" onclick="addToCart('Shawarma', 7)">Add to Cart</button> <p><b>Price: 7</b></p>
+</div>
+<div class="menu-item">
+<img src="burger.png" alt="burger" height="200"  width="200">
+<h3>burger</h3>
+<p></p>
+<button class="add-to-cart" onclick="addToCart('burger', 10)">Add to Cart</button> <p><b>Price: 10</b></p>
+</div>
+<div class="menu-item">
+<img src="Umm-Ali.jpg" alt="Umm Ali" height="200"  width="200">
+<h3 >Umm Ali</h3>
+<p>sweet dessert dish that consists of bread or pastry pieces soaked in milk, cream, sugar, and nuts (such as pistachios, almonds, and walnuts).</p>
+<button class="add-to-cart" onclick="addToCart('Umm Ali', 8)">Add to Cart</button> <p><b>Price: 8</b></p>
+</div>
+</div>
+</section>
+</main>    
+<p>&copy; 2023 PSAU Restaurant</p>   
+</body>
+</html>
